@@ -1,0 +1,194 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+hr,
+p {
+    margin: 0;
+}
+
+p.error {
+    color: red;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo img {
+    width: 250px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.print-area {
+    text-align: center;
+    padding: 20px;
+    width: 90%;
+}
+
+
+h1 {
+    font-size: 28px;
+    color: #1976d2;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #424242;
+}
+
+select,
+.summernote {
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+button {
+    font-size: 14px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#submitButton {
+    background-color: #1976d2;
+    color: #ffffff;
+}
+
+#submitButton:hover {
+    background-color: #1565c0;
+}
+
+#printButton {
+    background-color: #43a047;
+    color: #ffffff;
+}
+
+#printButton:hover {
+    background-color: #388e3c;
+}
+
+#resetButton {
+    background-color: #f44336;
+    color: #ffffff;
+}
+
+#resetButton:hover {
+    background-color: #d32f2f;
+}
+
+
+
+
+@media print {
+
+    .topbar,
+    .chitipatra_form {
+        visibility: hidden;
+    }
+
+    .print-area,
+    .print-area * {
+        visibility: visible;
+    }
+
+    .print-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 210mm;
+        height: 297mm;
+        /* padding: 20mm; */
+        box-sizing: border-box;
+        font-size: 16px;
+        color: #000;
+        line-height: 1.5;
+        background-color: red;
+    }
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 250px;
+}
+
+.pno_date {
+    padding: 5px 0;
+}
+
+.heading p {
+    margin: 0;
+}
+
+.pno_date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subject {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.footer {
+    background-image: linear-gradient(to right, #3150a1 0%, #142f73 100%);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+}
+
+.left-footer {
+    display: flex;
+    gap: 10px;
+}
+
+.footer .phone_num, .right-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .nepal_first_bank {
+    text-align: right;
+}
