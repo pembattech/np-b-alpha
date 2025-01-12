@@ -5,6 +5,8 @@ checkLogin();
 
 include_once 'navbar.php';
 ?>
+
+
 <div class="container">
 
     <div class="chitipatra_form">
@@ -72,58 +74,45 @@ include_once 'navbar.php';
 
         <div id="printContent"></div>
 
-        <div class="heading-left">
-            <p>प्रघान कार्यांलय</p>
-            <p>कम्प्लायन्स विभाग</p>
-            <p>धर्मपथ, काठमाडौ ।</p>
-        </div>
-    </div>
-    <hr>
 
-    <div class="pno_date">
-        <p class="p_no">प.सं: प्र.१./ क.वि./द७/</p>
-        <p id="nepali-date"></p>
-    </div>
-    <hr>
-
-
-    <div style="
+        <div style="
          display: flex;
         flex-direction: column;
         align-items:end;
         gap: 0.5rem;">
 
-        <p>भवदीय,</p>
+            <p>भवदीय,</p>
 
-        <p>..........</p>
+            <p>..........</p>
 
-    </div>
-
-    <div class="footer">
-        <div class="left-footer">
-            <p>
-                फोन नं.
-            </p>
-            <p class="phone_num">
-                <span>
-                    ०१-५९७११६५
-                </span>
-                <span>
-                    ०१-५३३२५००
-                </span>
-            </p>
         </div>
 
-        <div class="right-footer">
-            <p class="nepal_first_bank">
-                नेपालको पहिलो बैँक
-            </p>
-            <p>
-                Email: compliance@nepalbank.com.np Website www.nepalbank.com.np
-            </p>
+        <div class="footer">
+            <div class="left-footer">
+                <p>
+                    फोन नं.
+                </p>
+                <p class="phone_num">
+                    <span>
+                        ०१-५९७११६५
+                    </span>
+                    <span>
+                        ०१-५३३२५००
+                    </span>
+                </p>
+            </div>
+
+            <div class="right-footer">
+                <p class="nepal_first_bank">
+                    नेपालको पहिलो बैँक
+                </p>
+                <p>
+                    Email: compliance@nepalbank.com.np Website www.nepalbank.com.np
+                </p>
+            </div>
+
+
         </div>
-
-
 
     </div>
 </div>
