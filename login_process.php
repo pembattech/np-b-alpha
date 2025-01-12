@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['name'];
             echo "Login successful!";
-            // Redirect to the dashboard or another page
-            // header("Location: dashboard.php");
+
+            header("Location: index.php");
         } else {
             echo "Invalid password!";
         }
@@ -41,7 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->close();
 
 } else {
-    // If the form is not submitted via POST
     die("Invalid request method. Please submit the form correctly.");
 }
 ?>
