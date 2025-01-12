@@ -2,6 +2,11 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 hr,
@@ -13,31 +18,19 @@ p.error {
     color: red;
 }
 
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-}
-
-.logo img {
-    width: 250px;
-}
-
 .container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .print-area {
-    text-align: center;
-    padding: 20px;
+    margin-top: 20px;
     width: 90%;
 }
-
 
 h1 {
     font-size: 28px;
@@ -102,22 +95,9 @@ button {
     background-color: #388e3c;
 }
 
-#resetButton {
-    background-color: #f44336;
-    color: #ffffff;
-}
-
-#resetButton:hover {
-    background-color: #d32f2f;
-}
-
-
-
-
+/* Print styles */
 @media print {
-
-    .topbar,
-    .chitipatra_form {
+    body * {
         visibility: hidden;
     }
 
@@ -132,14 +112,14 @@ button {
         left: 0;
         width: 210mm;
         height: 297mm;
-        /* padding: 20mm; */
+        padding: 20mm;
         box-sizing: border-box;
         font-size: 16px;
         color: #000;
         line-height: 1.5;
-        background-color: red;
     }
 }
+
 
 .heading {
     display: flex;
