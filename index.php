@@ -145,7 +145,7 @@
     </div>
 
     <!-- Nepal Police Head Office Fields -->
-    <div id="nepalpolicheadoffice-fields" style="display: none;" aria-hidden="true">
+    <div id="nepalpoliceheadoffice-fields" style="display: none;" aria-hidden="true">
         <label for="np_chalaniNumber">Chalani Number:</label>
         <input type="number" name="np_chalaniNumber" id="np_chalaniNumber">
         <div id="np_chalaniNumber-error" class="error"></div>

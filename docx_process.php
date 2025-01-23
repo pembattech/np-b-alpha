@@ -1,4 +1,104 @@
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f4f8;
+        color: #333;
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        color: #007BFF;
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    p {
+        color: #555;
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .download-button {
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 16px;
+        color: white;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .download-button:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    .download-button:active {
+        background-color: #004085;
+        transform: translateY(0);
+    }
+
+    .download-button:focus {
+        outline: none;
+    }
+
+    .error-message {
+        background-color: #ff4d4d;
+        /* Bright red for error */
+        color: #fff;
+        /* White text for contrast */
+        padding: 20px 30px;
+        margin: 20px auto;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        max-width: 600px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Optional for smaller screens */
+    @media (max-width: 768px) {
+        .error-message {
+            font-size: 16px;
+            padding: 15px 20px;
+        }
+    }
+</style>
+
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 require_once 'vendor/autoload.php';
 
@@ -49,12 +149,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Invalid department selected!";
             exit;
     }
-
-
-    echo "Department: " . htmlspecialchars($department) . "<br>";
-
-    echo $chalaniDate;
-    
 
     // Function to convert Nepali date digits to symbols
     function convertNepaliDateToSymbols($nepaliDate)
@@ -123,7 +217,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($chalaniDate) {
         $converted_chalaniDate = convertNepaliDateToNP_Symbols($chalaniDate);
-        echo $converted_chalaniDate;
     }
 
 
@@ -170,6 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         array('name' => 'ARAP 009', 'size' => 16)
     );
 
+    $header->addWatermark(__DIR__ . '/static/img/image.png');
 
     // Add a straight line
     $section->addShape(
@@ -220,7 +314,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "",
         ['name' => 'ARAP 009', 'size' => 16],
     );
-
 
     // Print department specific fields
     if ($department === 'DMLI') {
@@ -667,25 +760,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     );
 
-    // Get current date and time for unique file names
+    $directory = "generated_docs";
+    if (!is_dir($directory)) {
+        mkdir($directory, 0777, true); // Create directory with write permissions
+    }
+
+    foreach (glob($directory . "/*.docx") as $existingFile) {
+        unlink($existingFile);
+    }
+
     $timestamp = date("Y-m-d_H-i-s");
 
     // Saving the document as Word2007 (.docx) with a unique name
-    $docFileName = "/tmp/doc_{$timestamp}.docx";
+    $docFileName = "generated_docs/doc_{$timestamp}.docx";
     $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
     $objWriter->save($docFileName);
 
-    // Saving the document as HTML (.html) with a unique name
-    $htmlFileName = "/tmp/web_{$timestamp}.html";
-    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
-    $objWriter->save($htmlFileName);
+    // // Saving the document as HTML (.html) with a unique name
+    // $htmlFileName = "/tmp/web_{$timestamp}.html";
+    // $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'HTML');
+    // $objWriter->save($htmlFileName);
 
-    echo "<br>Word file saved as: " . $docFileName;
-    echo "<br>HTML file saved as: " . $htmlFileName;
+    // echo "<br>Word file saved as: " . $docFileName;
+    // echo "<br>HTML file saved as: " . $htmlFileName;
+    ?>
 
+
+    <!-- HTML for the page -->
+    <div class="container">
+        <h2>Document Saved Successfully!</h2>
+        <p>Your files have been saved successfully for the <strong><?php echo htmlspecialchars($department); ?></strong>
+            department.</p>
+        <p>You can download the DOCX file using the link below:</p>
+
+        <!-- Provide a link to the saved DOCX file -->
+        <a href="generated_docs/doc_<?php echo $timestamp; ?>.docx" download class="download-button">Download DOCX File</a>
+    </div>
+
+    <?php
 
 
 } else {
-    echo "Invalid request method.";
+    echo '<div class="error-message">Invalid request method.</div>';
 }
+
 ?>
