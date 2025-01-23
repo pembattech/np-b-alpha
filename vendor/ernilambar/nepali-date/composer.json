@@ -1,0 +1,60 @@
+{
+  "name": "ernilambar/nepali-date",
+  "description": "Nepali Date",
+  "keywords": [
+    "nepali",
+    "bikram-sambat",
+    "date"
+  ],
+  "homepage": "https://github.com/ernilambar/nepali-date",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nilambar Sharma",
+      "email": "nilambar@outlook.com",
+      "homepage": "https://www.nilambar.net",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/ernilambar/nepali-date/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nilambar\\NepaliDate\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nilambar\\NepaliDate\\Test\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=5.6"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "format": [
+      "composer --working-dir=build-cs update --no-interaction",
+      "build-cs/vendor/bin/phpcbf --standard=phpcs.xml.dist"
+    ],
+    "format:tests": [
+      "composer --working-dir=build-cs update --no-interaction",
+      "build-cs/vendor/bin/phpcbf --standard=phpcs.tests.xml.dist"
+    ],
+    "lint": [
+      "composer --working-dir=build-cs update --no-interaction",
+      "build-cs/vendor/bin/phpcs --standard=phpcs.xml.dist"
+    ],
+    "lint:tests": [
+      "composer --working-dir=build-cs update --no-interaction",
+      "build-cs/vendor/bin/phpcs --standard=phpcs.tests.xml.dist"
+    ],
+    "test": [
+      "composer --working-dir=build-phpunit update --no-interaction",
+      "build-phpunit/vendor/bin/phpunit --verbose"
+    ]
+  }
+}
