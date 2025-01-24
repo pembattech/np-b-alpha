@@ -1,20 +1,23 @@
+<?php
+include_once 'is_login.php';
+checkLogin();
+
+include_once 'navbar.php';
+?>
+
 <style>
     body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f0f4f8;
-        color: #333;
-        text-align: center;
-        padding: 50px 0;
+        background-color: #f4f7fa;
     }
 
     .container {
-        background-color: #fff;
+        background-color: #ffffff;
         padding: 30px;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         width: 100%;
         max-width: 600px;
-        margin: 0 auto;
+        margin: 10px auto;
     }
 
     h2 {
@@ -796,6 +799,8 @@ try {
 
             <!-- Provide a link to the saved DOCX file -->
             <a href="generated_docs/doc_<?php echo $timestamp; ?>.docx" download class="download-button">Download DOCX File</a>
+            <br>
+            <p><a href="index.php" class="home-button">Return to Home</a></p>
         </div>
 
         <?php
