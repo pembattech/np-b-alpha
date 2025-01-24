@@ -1,18 +1,24 @@
+<?php
+include_once 'is_login.php';
+checkLogin();
+
+include_once 'navbar.php';
+?>
+
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 20px;
         padding: 0;
         background-color: #f4f7fa;
     }
 
-    form {
+    #docForm {
         background-color: white;
         padding: 20px;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         max-width: 600px;
-        margin: auto;
+        margin: 10px auto;
     }
 
     select,
@@ -84,7 +90,7 @@
 <script src="//unpkg.com/nepali-date-picker@2.0.2/dist/nepaliDatePicker.min.js"></script>
 <link rel="stylesheet" href="//unpkg.com/nepali-date-picker@2.0.2/dist/nepaliDatePicker.min.css">
 
-<form action="docx_process.php" method="POST">
+<form action="docx_process.php" method="POST" id="docForm">
     <select id="department" name="department" required>
         <option value="">Select Department</option>
         <option value="DMLI">Mr. Asset Laundering Investigation Department</option>

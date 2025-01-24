@@ -28,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Execute the query
     if ($stmt->execute()) {
         echo "Registration successful!";
+
+        header('Location: login.php');
     } else {
         echo "Error: " . $stmt->error;
     }

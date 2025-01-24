@@ -1,7 +1,7 @@
 <?php
 // Connect to the database
 $servername = "localhost";
-$port = "8000";
+$port = "80";
 $username = "root";
 $password = "";
 $dbname = "np_b_alpha";
