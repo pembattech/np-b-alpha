@@ -7,7 +7,7 @@ $password = "";
 $dbname = "np_b_alpha";
 
 // Create a connection
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
