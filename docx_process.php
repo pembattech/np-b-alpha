@@ -268,7 +268,7 @@ try {
             array('name' => 'ARAP 009', 'size' => 16)
         );
 
-        $header->addWatermark(__DIR__ . '/static/img/image.png');
+        $header->addWatermark(__DIR__ . '/static/img/watermark.png');
 
         // Add a straight line
         $section->addShape(
@@ -296,7 +296,7 @@ try {
         // Add text with a tab to move "मिति" to the end
         $section->addText(
             "k=;+=M k|=sf=!÷s=lj=÷*!÷\tldltM $convertedDate",
-            ['name' => 'ARAP 009', 'size' => 12],
+            ['name' => 'ARAP 009', 'size' => 14],
             'TabStyle'
         );
 
@@ -351,7 +351,6 @@ try {
                 "",
                 ['name' => 'ARAP 009', 'size' => 12],
             );
-
 
             // Add text run
             $textrun = $section->addTextRun();
@@ -747,32 +746,36 @@ try {
         $footer = $section->addFooter();
         $footer->firstPage();
 
-        // Add text to the footer
-        $footer->addText('This is the footer text.', ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
+        // $footer->addWatermark(__DIR__ . '/static/img/image.png');
 
-        // Rectangle
-        $footer->addShape(
-            'rect',
-            [
-                'roundness' => 10000,
-                'frame' => ['width' => 460, 'height' => 10],
-                'fill' => ['color' => '#FF0000'],
-                'outline' => ['color' => '#FF0000', 'weight' => 30],
-                'shadow' => [],
-                ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::START]
+        $footer->addImage(__DIR__ . '/static/img/footer.png', ['width' => 480, 'height' => 34]);
 
-            ],
+        // // Add text to the footer
+        // $footer->addText('This is the footer text.', ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
 
-        );
+        // // Rectangle
+        // $footer->addShape(
+        //     'rect',
+        //     [
+        //         'roundness' => 10000,
+        //         'frame' => ['width' => 460, 'height' => 10],
+        //         'fill' => ['color' => '#FF0000'],
+        //         'outline' => ['color' => '#FF0000', 'weight' => 30],
+        //         'shadow' => [],
+        //         ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::START]
+
+        //     ],
+
+        // );
 
         $directory = "generated_docs";
         if (!is_dir($directory)) {
             mkdir($directory, 0777, true); // Create directory with write permissions
         }
 
-        foreach (glob($directory . "/*.docx") as $existingFile) {
-            unlink($existingFile);
-        }
+        // foreach (glob($directory . "/*.docx") as $existingFile) {
+        //     unlink($existingFile);
+        // }
 
         $timestamp = date("Y-m-d_H-i-s");
 
